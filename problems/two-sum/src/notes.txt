@@ -1,0 +1,14 @@
+The approach I have to this problem is relatively simple, considering that 
+for each loop the number we are looking for is the difference between 
+the target and the current number in the loop. As (currrent_num + needed_num = target).
+Once you have the needed number you can check the data store you have selected
+in this case I used a hashmap so that no matter the size of the list we still 
+have O(1) complexity but the tradeoff here is that the space complexity is 
+O(n) meaning the size of the map can grow very large for a large vector.
+If there exists no key value pair for the currrent number you have tried to get
+from the map you insert the number and its position into the map. But 
+if the number exists in the map, i.e. we have a position and number for the 
+desired number that adds to the current number to produce the target then we
+return the position which is the value in the map and the position of the current number
+gotten from the iter().enumerate() call. Both these values are returned in
+a vector then you can cast each value as an i32.
