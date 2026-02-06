@@ -1,0 +1,25 @@
+What I think about this problem is that we are to take two lists, reverse 
+the order of each one and then take each item in the list as a number, 
+after that we will add both resulting numbers. The sum should be reversed 
+and each number placed in a new list.
+The reversal is a way to throw off the person solving the question, 
+just add the numbers in each list then carry the remainder if the sum is over
+10. The math we need to replicate is simple, the problem is execution. The math
+is exactly the same as adding two three digit numbers on paper where 
+you carry over if a pair adds up to > 10.
+Something else to note is that while you can liken the process to normal 
+3 digit number addition it is quite different. In regular addition you add
+from right to left to get the correct answer, to solve this problem 
+without writing code to reverse your answer we are effectively adding the
+numbers in reverse from left to right. i.e. Instead of adding and carrying
+to the left you add and carry to the right giving you the reversed result 
+directly.
+- To implement this you define the starter node/head.
+- create new references to both lists
+- define a variable for the number carried over 
+- while there are still digits to process or there is still a carry
+- get the value of each node from both lists 
+- move to the next node
+- calculate the new digit and carrying
+- add new node to result
+- skip dummy head and return real result which is the next_node
