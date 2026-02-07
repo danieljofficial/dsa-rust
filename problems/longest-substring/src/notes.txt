@@ -1,0 +1,25 @@
+The solution i came up with is to 
+- convert the string argument into an vector
+- create a new vector to hold the chars in desired non repeating substring
+- loop through the vector with the string argument
+- check if the current item is in the vector of substrings
+- if it is continue
+- if it is not add it then increase and return the count
+
+But this is not correct because it fails for strings like pwwkew with a conse
+cutive w.
+We are supposed to use the sliding window approach to solve this problem
+- first we convert the string argument into a vector 
+- In this operation there would be two pointers one to the left and the other to the right
+of the window
+- define the first pointer as a variable the second one would be the current 
+value/position in the vector we are iterating over
+- we loop over the numbers in the length of the vector 0..vector.len()
+- while the current letter vector[right] being looped over exists in the set
+- remove the value of the left pointer in the vector - vector[left] 
+- add 1 to the left pointer
+- do this until the value of the right pointer is no longer in the window/set.
+- once the while condition is false insert the value of the right pointer into the vector
+- then set the max length to equal the maximum value between the current max length
+and the difference between the right and the left pointer + 1
+- return the max length outside the loop.
