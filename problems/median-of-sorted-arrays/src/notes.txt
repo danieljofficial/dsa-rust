@@ -1,0 +1,52 @@
+Quite the complex problem, this one involved using something called a binary search 
+to find the values we needed in each array instead of just merging the array
+together. The reason for this is because using a binary search performs better
+at O(log(min(m, n))) instead of O(m + n) if we used merging.
+For the solution, we are giving two sorted vectors of i32 numbers we will first
+- Find the smaller vector and take note of it, for binary search efficiency
+  let us call the smaller vector a then the other vector b
+- Then we will calculate the total_length of both vectors and the half_length
+- half_length is calculated as (total_length + 1)  / 2 this works for 
+  even and odd lengths
+- define two variables m = a.len() and n = b.len()
+- define our left pointer for vector a, left = 0 and right pointer for 
+  vector a also, right = m the length of a. So we start at both ends of the vector
+- While left <= right we do the following:
+- define variables for our partitions, partition_a = left + right / 2
+- partition_b = half_len - partition_a, this is because partition_a + partition_b
+  must equal half_len
+- Now we get the middle values in both vectors, a_left, a_right, b_left, b_right
+- a_left is the last value before the partition in a
+- a_right is the first value after the partition in a
+- b_left is the last value before the partition in b 
+- b_right is the first value after the partition in b_left
+- a_left can have two values, if the number of values in partition_a > 0
+  then a_left = a[partition_a - 1]. else a_left = i32::MIN, this means either
+  there are no values in partition_a or the partition is too far to the left
+  into negative numbers hence we jist give it the smallest i32 number.
+- a_right can have two values, if a_left is smaller than the length of the
+  vector then a_left = a[partition_a] that is a good partition within the array.
+  else a_left = i32::MAX meaning we have partitioned outside the length of the 
+  vector so we give it the largest i32 number as a point to get bearing from.
+- b_left can have two values like a_left just thaat partition_b is what 
+  we work with heree.
+- b_right also follows the same principle just that we deal with the length of
+  b which is n.
+- Once we have these four pointers we check if the numbers are in the 
+  correct order, remember both vectors are sorted in the question, so it 
+  should follow that these limits are true:
+- if a_left <= b_right && b_left <= a_right is true
+- Then we check if the total_length is an even or odd number
+  total_length % 2 == 0 
+- if total_length is even we run this calculation:
+- a_left.max(b_left) + a_right.min(b_right) / 2
+- This gives us the median, but if the total_length is odd then we do this:
+- a_left.max(b_left) this gives us the median
+- If the condition on line 38 is false then we check this condition 
+- else if a_left > b_right meaning the left a partition is too large we 
+  move the partition to the left like this:
+- right = partition_a - 1, if line 46 is falase that would mean a_left is 
+  too small and we move the partition to the right like so: 
+- left = partition_a + 1
+- at the end of the function we return 0.0 to satisfy the types, though this
+  point should not be reached.

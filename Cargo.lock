@@ -11,6 +11,10 @@ name = "longest-substring"
 version = "0.1.0"
 
 [[package]]
+name = "median-of-sorted-arrays"
+version = "0.1.0"
+
+[[package]]
 name = "reverse-linked-list"
 version = "0.1.0"
 
