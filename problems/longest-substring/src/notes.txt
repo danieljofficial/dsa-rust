@@ -7,7 +7,7 @@ The solution i came up with is to
 - if it is not add it then increase and return the count
 
 But this is not correct because it fails for strings like pwwkew with a conse
-cutive w.
+cutive w. returns pwke which is a subsequence and not a substring.
 We are supposed to use the sliding window approach to solve this problem
 - first we convert the string argument into a vector 
 - In this operation there would be two pointers one to the left and the other to the right

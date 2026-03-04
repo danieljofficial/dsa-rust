@@ -17,5 +17,6 @@ fn main() {
         vec![]
     }
     let result = two_sum(vec![1, 2, 3, 4], 6);
+    assert_eq!(result, vec![1, 3]);
     println!("{:?}", result)
 }

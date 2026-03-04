@@ -21,5 +21,6 @@ fn main() {
     }
 
     let result = longest_substring(String::from("pwwkew"));
-    println!("{:#?}", result)
+    assert_eq!(3, result);
+    println!("{:#?}", result);
 }
